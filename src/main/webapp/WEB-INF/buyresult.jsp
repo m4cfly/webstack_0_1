@@ -31,7 +31,7 @@
             <br>
             <p> Coin ID: ${requestScope.coin_id}</p>
 
-            <c:forEach var="infoItem" items="${requestScope.infos}">
+            <c:forEach var="infoItem" items="${requestScope.info}">
                 info: ${infoItem} <br/>
             </c:forEach>
 

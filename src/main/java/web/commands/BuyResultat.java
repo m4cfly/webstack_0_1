@@ -1,6 +1,8 @@
 package web.commands;
 
 import business.exceptions.UserException;
+import business.services.BuyFacade;
+import business.services.BuyUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BuyResultat extends CommandUnprotectedPage{
+
+    //private class BuyFacade buyFacade;
     public BuyResultat(String pageToShow) {
         super(pageToShow);
     }
@@ -18,6 +22,7 @@ public class BuyResultat extends CommandUnprotectedPage{
         double coinprice = 0.0;
         double result = 0.0;
         String category = "";
+
         String gender = request.getParameter("gender");
         int coin_id = Integer.parseInt(request.getParameter("coins"));
 
@@ -31,38 +36,24 @@ public class BuyResultat extends CommandUnprotectedPage{
         try {
         buyamount = Double.parseDouble(request.getParameter("buyamount"));
         coinprice = Double.parseDouble(request.getParameter("coinprice"));
-
         } catch (NumberFormatException ex){
-            throw new UserException("Husk at indtaste to heltal i formularen.");
+            request.setAttribute("error", "Husk at indtaste to heltal i formularen. ");
+            return "index";
+            //throw new UserException("Husk at indtaste to heltal i formularen.");
         }
-        result = buyamount * coinprice;
+        result = BuyUtil.calcBuy(buyamount,coinprice);
 
+        category = BuyUtil.getCategory(result);
 
-        if( result <= 100){
-            category = "Du har under 100 credits";
-        }
-        else if (result < 500){
-            category = "Du har under 200 credits";
-        }
-        else if (result < 1000) {
-            category = "Du har over 1000 credits";
-        }
-        else if (result < 2000){
-                category = "Du har over 2000 credits";
-        }
-        else if (result < 3000){
-            category = "Du har over 3000 credits";
-        } else {
-            category = "Dine credits blev ikke defineret ordentligt.";
-        }
-
-        request.setAttribute("result", result);
+        request.setAttribute("result", String.format("%.2f", result));
         request.setAttribute("buyamount", buyamount);
         request.setAttribute("coinprice", coinprice);
         request.setAttribute("category", category);
         request.setAttribute("gender", gender);
         request.setAttribute("coin_id", coin_id);
         request.setAttribute("info", infoList);
+
+        //BuyFacade.insertBuyEntry(result, buyamount,coinprice,category,gender,coin_id,infoList);
 
         return (pageToShow);
     }

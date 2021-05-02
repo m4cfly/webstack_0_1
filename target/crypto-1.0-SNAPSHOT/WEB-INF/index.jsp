@@ -30,7 +30,7 @@
                         <label for="other">Other</label>
                     </div>
                     <div class="form-group">
-                        <select name="coin_id" class="form-select" aria-label="Default select example">
+                        <select name="coins" class="form-select" aria-label="Default select example">
                             <option selected>Select Coin</option>
                             <option value="1">BTC</option>
                             <option value="2">ETH</option>
@@ -39,11 +39,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="checkbox" id="vehicle1" name="infos" value="Bike">
+                        <input type="checkbox" id="vehicle1" name="info" value="Bike">
                         <label for="vehicle1"> I have a bike</label><br>
-                        <input type="checkbox" id="vehicle2" name="infos" value="Car">
+                        <input type="checkbox" id="vehicle2" name="info" value="Car">
                         <label for="vehicle2"> I have a car</label><br>
-                        <input type="checkbox" id="vehicle3" name="infos" value="Boat">
+                        <input type="checkbox" id="vehicle3" name="info" value="Boat">
                         <label for="vehicle3"> I have a boat</label><br>
                     </div>
                     <div class="form-group">
@@ -52,8 +52,8 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <label for="coinprice">0.03$</label>
-                        <input id="coinprice" name="coinprice" type="text" placeholder="0.03" value="0.03" class="form-control"/>
+                        <label for="coinprice">0.30$</label>
+                        <input id="coinprice" name="coinprice" type="text" placeholder="0.30" value="0.30" class="form-control"/>
                     </div>
 
                     <br><br>
