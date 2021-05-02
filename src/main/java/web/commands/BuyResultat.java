@@ -11,9 +11,11 @@ import java.util.List;
 
 public class BuyResultat extends CommandUnprotectedPage{
 
-    //private class BuyFacade buyFacade;
+    private BuyFacade buyFacade;
     public BuyResultat(String pageToShow) {
+
         super(pageToShow);
+        this.buyFacade = new BuyFacade(database);
     }
 
     @Override
@@ -24,7 +26,7 @@ public class BuyResultat extends CommandUnprotectedPage{
         String category = "";
 
         String gender = request.getParameter("gender");
-        int coin_id = Integer.parseInt(request.getParameter("coins"));
+        int coin_id = Integer.parseInt(request.getParameter("coin_id"));
 
         String [] infos = request.getParameterValues("info");
         List<String> infoList = null;
@@ -53,7 +55,7 @@ public class BuyResultat extends CommandUnprotectedPage{
         request.setAttribute("coin_id", coin_id);
         request.setAttribute("info", infoList);
 
-        //BuyFacade.insertBuyEntry(result, buyamount,coinprice,category,gender,coin_id,infoList);
+        buyFacade.insertBuyEntry(result, buyamount,coinprice,category,gender,coin_id,infoList);
 
         return (pageToShow);
     }

@@ -30,7 +30,7 @@
                         <label for="other">Other</label>
                     </div>
                     <div class="form-group">
-                        <select name="coins" class="form-select" aria-label="Default select example">
+                        <select name="coin_id" class="form-select" aria-label="Default select example">
                             <option selected>Select Coin</option>
                             <option value="1">BTC</option>
                             <option value="2">ETH</option>

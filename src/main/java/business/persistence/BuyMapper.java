@@ -2,6 +2,8 @@ package business.persistence;
 
 import business.exceptions.UserException;
 
+import java.util.List;
+
 public class BuyMapper {
     private Database database;
 
@@ -9,7 +11,14 @@ public class BuyMapper {
         this.database = database;
     }
 
-    public void insertBuyEntry() throws UserException{
+    public void insertBuyEntry(
+            double result,
+            double buyamount,
+            double coinprice,
+            String category,
+            String gender,
+            int coin_id,
+            List<String> infoList) throws UserException{
         //TODO: INSERT DATA INTO DATABASE
 
     }
